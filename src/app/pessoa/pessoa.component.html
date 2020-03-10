@@ -1,0 +1,40 @@
+<app-layout *ngIf="display == 'pesquisar' ">
+   
+
+
+    <table border="1">
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>telefone</th>
+            <th>data</th>
+            <th>endereço</th>
+            <th>bairro</th>
+            <th>cidade</th>
+            <th>estado</th>
+            <th>status</th>
+            <th>remover</th>
+            <th>Editar</th>
+        </tr>
+        <tr *ngFor="let pessoa of listaPessoa">
+            <td>{{pessoa.codigo}}</td>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.telefone}}</td>
+            <td>{{pessoa.data | date: 'dd/MM/yyyy'}}</td>
+            <td>{{pessoa.endereco}}</td>
+            <td>{{pessoa.bairro}}</td>
+            <td>{{pessoa.cidade}}</td>
+            <td>{{pessoa.estado}}</td>
+            <td *ngIf="pessoa.ativo">sim</td>
+            <td *ngIf="!pessoa.ativo">nao</td>
+            <td style="cursor: pointer"><a (click)="remover(pessoa)">X</a></td>
+            <td><button (click)="editar(pessoa)">editar</button></td>
+        </tr>
+    </table>
+    <button (click)="estadoIncluir()">incluir</button>
+
+
+
+</app-layout>
+
+<app-pessoa-manter [pessoa]="pessoa" (pessoaEmitir)="incluir($event)" *ngIf=" display == 'incluir' || display == 'editar' " (display)=" alterar($event)" [displayPai]="display" (pessoaVoltar)="voltar($event)"></app-pessoa-manter>

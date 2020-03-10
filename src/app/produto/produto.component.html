@@ -1,0 +1,47 @@
+<app-layout>
+   <label for="">Codigo</label>
+   <input type="text" [(ngModel)]="produto.codigo">
+   <br>
+   <label for="">Nome</label>
+   <input type="text" [(ngModel)]="produto.nome">
+   <br>
+   <label for="">Descrição</label>
+   <input type="text" [(ngModel)]="produto.descricao">
+   <br>
+   <label for="">Data de validade</label>
+   <input type="date" [(ngModel)]="produto.dataValidade">
+   <br>
+   <label for="">Quantidade</label>
+   <input type="text" [(ngModel)]="produto.quantidade">
+   <br>
+   <label for="">Unidade de medida</label>
+   <select [(ngModel)]="produto.unidadeMedida">
+       <option *ngFor="let unidade of listaUnidade" [ngValue]="unidade">
+           {{unidade}}
+       </option>
+   </select>
+   <button (click)="adicionarProduto()">adicionar produto</button>
+
+
+   <table border="1">
+       <tr>
+           <th>Codigo</th>
+           <th>Nome</th>
+           <th>Descrição</th>
+           <th>Data de Validade</th>
+           <th>Quantidade</th>
+           <th>Unidade de Medida</th>
+           <th>Remover</th>
+       </tr>
+       <tr *ngFor="let p of listaProduto">
+           <td>{{p.codigo}}</td>
+           <td>{{p.nome}}</td>
+           <td>{{p.descricao}}</td>
+           <td>{{p.dataValidade}}</td>
+           <td>{{p.quantidade}}</td>
+           <td>{{p.unidadeMedida}}</td>
+           <td> <button (click)="apagar(produto)">apagar</button> </td>
+       </tr>
+   </table>
+
+</app-layout>

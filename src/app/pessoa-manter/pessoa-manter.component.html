@@ -1,0 +1,48 @@
+<app-layout>
+    <h3 [textContent]="titulo"></h3>
+
+    <label for="">Codigo</label>
+    <input type="text" [(ngModel)]="pessoa.codigo" />
+    <br>
+    <label for="">Nome</label>
+    <input type="text" [(ngModel)]="pessoa.nome" />
+    <br>
+    <label for="">Telefone</label>
+    <input type="text" [(ngModel)]="pessoa.telefone" />
+    <br>
+    <label for="">Data de nascimento</label>
+    <input type="date" [(ngModel)]="pessoa.data" />
+    <br>
+    <label for="">Endereço</label>
+    <input type="text" [(ngModel)]="pessoa.endereco" />
+    <br>
+    <label for="">Bairro</label>
+    <input type="text" [(ngModel)]="pessoa.bairro" />
+    <br>
+    <label for="">Cidade</label>
+    <select [(ngModel)]="pessoa.cidade">
+        <option *ngFor="let cidade of listaMunicipios" [ngValue]="cidade.nome">
+            {{cidade.nome}}  
+        </option>
+    </select>
+    <br>
+    <label for="">Estado</label>
+    <select [(ngModel)]="pessoa.estado" (ngModelChange)="carregarCidade()">
+        <option *ngFor="let estado of listaEstado" [ngValue]="estado" >
+            {{estado}}
+        </option>
+    </select>
+   
+    <br>
+    <label for="">Ativo</label>
+    <input type="radio" [(ngModel)]="pessoa.ativo" [value]="true">Sim
+    <input type="radio" [(ngModel)]="pessoa.ativo" [value]="false">Nao
+
+
+    <!-- <button (click)="incluir()">adicionar pessoa</button>
+    <br> -->
+
+
+    <button (click)="alterar()">alterar</button>
+    <button (click)="voltar()">voltar</button>
+</app-layout>
